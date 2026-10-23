@@ -458,7 +458,8 @@ function openSmsReminder(invoiceId) {
   document.getElementById('smsMessageBox').value =
     `Hello ${inv.tenantName}! Rentora bill for ${inv.room} (${inv.period}):\n` +
     `- Electricity (${round2(inv.kwhUsed).toFixed(2)} kWh): ₱${round2(inv.powerAmount).toFixed(2)}\n` +
-    `- Water: ₱${round2(inv.waterAmount).toFixed(2)}\n- Rent: ₱${round2(inv.rentAmount).toFixed(2)}\n` +
+    `- Water: ₱${round2(inv.waterAmount).toFixed(2)}\n` +
+    `- Rent: ₱${round2(inv.rentAmount).toFixed(2)}\n` +
     `BALANCE DUE: ₱${remaining.toFixed(2)}. Thank you! - Ate Elena`;
   openModal('smsModal');
 }
