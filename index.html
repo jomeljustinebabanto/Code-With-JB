@@ -5,134 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rentora - Boarding House Utility &amp; Rent Management</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { 
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif; 
-    }
-
-    .serif-heading {
-      font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-    }
-
-    @keyframes slideUpFade {
-      from {
-        opacity: 0;
-        transform: translateY(18px) scale(0.98);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    @keyframes shakeAnimation {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-8px); }
-      40%, 80% { transform: translateX(8px); }
-    }
-
-    .animate-entrance {
-      animation: slideUpFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    .animate-shake {
-      animation: shakeAnimation 0.35s ease-in-out;
-    }
-
-    .memoji-scene {
-      perspective: 700px;
-    }
-
-    .memoji-head-wrapper {
-      transform-style: preserve-3d;
-      transition: transform 0.08s ease-out;
-    }
-
-    .memoji-skin {
-      background: radial-gradient(circle at 36% 28%, #ffe3d1 0%, #f7b192 55%, #d87d56 95%, #b25832 100%);
-      box-shadow: 
-        inset 0 -8px 14px rgba(120, 35, 10, 0.35),
-        inset 0 4px 10px rgba(255, 255, 255, 0.7),
-        0 14px 28px rgba(15, 23, 42, 0.25);
-    }
-
-    .memoji-hair-top {
-      background: radial-gradient(circle at 35% 20%, #47352d 0%, #241814 60%, #120a07 100%);
-      box-shadow: inset 0 -3px 8px rgba(0,0,0,0.6), 0 4px 8px rgba(0,0,0,0.25);
-    }
-
-    .memoji-sclera {
-      background: radial-gradient(circle at 50% 40%, #ffffff 0%, #f1f5f9 70%, #cbd5e1 100%);
-      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.28), 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .memoji-iris {
-      background: radial-gradient(circle at 40% 35%, #854d0e 0%, #451a03 70%, #1a0802 100%);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-    }
-
-    .eye-lid {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 0%;
-      background: #e28e6c;
-      border-radius: 0 0 14px 14px;
-      transition: height 0.08s ease-in-out;
-      z-index: 25;
-      pointer-events: none;
-    }
-
-    .glass-rim {
-      border: 3px solid #b45309;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(0.5px);
-      box-shadow: 
-        0 4px 8px rgba(0, 0, 0, 0.15),
-        inset 0 0 6px rgba(255, 255, 255, 0.4);
-    }
-
-    .memoji-lips {
-      background: radial-gradient(circle at 50% 30%, #ea580c 0%, #be123c 80%, #881337 100%);
-      box-shadow: inset 0 1px 2px rgba(255,255,255,0.4), 0 2px 4px rgba(136, 19, 55, 0.25);
-    }
-
-    @media print {
-      body * { 
-        visibility: hidden; 
-      }
-      .no-print {
-        display: none !important;
-      }
-      #receiptModal, #receiptCardWrapper, #printableReceiptArea, #printableReceiptArea * { 
-        visibility: visible !important; 
-      }
-      #receiptModal {
-        position: static !important;
-        display: block !important;
-        background: white !important;
-        padding: 0 !important;
-      }
-      #receiptCardWrapper {
-        border: none !important;
-        box-shadow: none !important;
-        max-width: 100% !important;
-        width: 100% !important;
-        padding: 0 !important;
-      }
-      #printableReceiptArea {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        margin: 0;
-        padding: 24px;
-        background: white;
-        box-shadow: none !important;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen">
 
@@ -140,15 +13,18 @@
   <section id="loginScreen" class="no-print min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-slate-950 via-emerald-950 to-slate-900">
     <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-center animate-entrance">
 
-      <!-- Left Column: Welcome Back Branding -->
       <div class="lg:col-span-7 text-white space-y-6 lg:pr-8">
+        <!-- RENTORA LOGO: LOGIN HEADER -->
         <div class="flex items-center gap-3.5">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-500 flex items-center justify-center text-white shadow-lg shadow-emerald-500/30 font-black text-2xl">
-            R
-          </div>
+          <svg class="w-12 h-12 shrink-0 shadow-lg shadow-emerald-500/20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="24" fill="#059669" />
+            <path d="M 22 68 A 34 34 0 1 1 78 68" stroke="#047857" stroke-width="4" stroke-dasharray="6 4" stroke-linecap="round" fill="none" />
+            <path d="M 28 64 A 28 28 0 1 1 72 64" stroke="#A7F3D0" stroke-width="2.5" stroke-opacity="0.6" fill="none" />
+            <path d="M 34 26 H 54 C 62.8 26 70 32.2 70 41 C 70 47.8 65.2 53.5 58.5 55.2 L 71 74 H 57.5 L 46.5 56 H 45 V 74 H 34 V 26 Z M 45 36 V 47 H 53.5 C 57 47 60 44.5 60 41.5 C 60 38.5 57 36 53.5 36 H 45 Z" fill="#0F172A" />
+          </svg>
           <div>
-            <h2 class="text-xl font-bold tracking-tight leading-none">rentora</h2>
-            <p class="text-[10px] tracking-[0.22em] text-slate-300 uppercase mt-1">Boarding House Management</p>
+            <h2 class="text-2xl font-black tracking-tight leading-none text-white">Rentora</h2>
+            <p class="text-[10px] tracking-[0.22em] text-emerald-300 uppercase mt-1">Utility &amp; Rent Management</p>
           </div>
         </div>
 
@@ -166,10 +42,8 @@
         </p>
       </div>
 
-      <!-- Right Column: Sign In Card -->
       <div class="lg:col-span-5">
         <div id="loginCard" class="bg-white rounded-2xl p-7 sm:p-8 shadow-2xl border border-slate-100 space-y-5">
-          
           <div class="space-y-1.5">
             <h2 class="serif-heading text-2xl font-bold text-slate-900">Sign in</h2>
             <p class="text-xs text-slate-500 leading-relaxed">
@@ -182,22 +56,17 @@
 
           <form onsubmit="handleLoginSubmit(event)" class="space-y-4">
             <div>
-              <label for="loginUsername" class="block text-[11px] font-bold tracking-wider text-slate-700 uppercase mb-1.5">
-                Username or Email
-              </label>
+              <label for="loginUsername" class="block text-[11px] font-bold tracking-wider text-slate-700 uppercase mb-1.5">Username or Email</label>
               <input type="text" id="loginUsername" required placeholder="username" value="elena"
-                     class="w-full text-sm px-4 py-3 rounded-xl border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition" />
+                     class="w-full text-sm px-4 py-3 rounded-xl border border-slate-200 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition" />
             </div>
 
             <div>
-              <label for="loginPassword" class="block text-[11px] font-bold tracking-wider text-slate-700 uppercase mb-1.5">
-                Password
-              </label>
+              <label for="loginPassword" class="block text-[11px] font-bold tracking-wider text-slate-700 uppercase mb-1.5">Password</label>
               <div class="relative">
                 <input type="password" id="loginPassword" required placeholder="••••••••" value="admin123"
-                       class="w-full text-sm pl-4 pr-11 py-3 rounded-xl border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition" />
-                <button type="button" onclick="togglePasswordVisibility('loginPassword', 'eyeIconLogin')" 
-                        title="Show or hide password"
+                       class="w-full text-sm pl-4 pr-11 py-3 rounded-xl border border-slate-200 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition" />
+                <button type="button" onclick="togglePasswordVisibility('loginPassword', 'eyeIconLogin')"
                         class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 cursor-pointer">
                   <svg id="eyeIconLogin" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -215,8 +84,7 @@
               <span class="text-emerald-700 font-medium">Demo: elena / admin123</span>
             </div>
 
-            <button type="submit"
-                    class="w-full py-3 px-5 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white text-sm font-bold rounded-full shadow-md shadow-emerald-600/20 transition-all flex items-center justify-center gap-2 cursor-pointer">
+            <button type="submit" class="w-full py-3 px-5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-full shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
               <span>Sign in</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -224,7 +92,6 @@
             </button>
           </form>
 
-          <!-- New Tenant Registration Callout Box -->
           <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-3 flex items-center justify-between gap-3">
             <div class="flex items-center gap-3">
               <div class="w-9 h-9 rounded-lg bg-slate-900 text-white flex items-center justify-center shrink-0">
@@ -237,25 +104,17 @@
                 <p class="text-[11px] text-slate-500">Register with your boarding house.</p>
               </div>
             </div>
-            <button type="button" onclick="openModal('signUpModal')"
-                    class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-3.5 py-2 rounded-full flex items-center gap-1.5 shrink-0 transition cursor-pointer">
+            <button type="button" onclick="openModal('signUpModal')" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-3.5 py-2 rounded-full flex items-center gap-1.5 shrink-0 transition cursor-pointer">
               <span>Sign up</span>
-              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
             </button>
           </div>
 
-          <!-- Forgot Password Footer Link -->
           <div class="pt-3 border-t border-slate-100 text-center">
             <p class="text-xs text-slate-400">
-              Forgot your password? 
-              <button type="button" onclick="openModal('resetPasswordModal')" class="text-emerald-700 hover:text-emerald-800 font-bold hover:underline cursor-pointer">
-                Reset it here
-              </button>
+              Forgot your password?
+              <button type="button" onclick="openModal('resetPasswordModal')" class="text-emerald-700 hover:text-emerald-800 font-bold hover:underline cursor-pointer">Reset it here</button>
             </p>
           </div>
-
         </div>
       </div>
 
@@ -264,30 +123,32 @@
 
   <!-- VIEW 2: MAIN APPLICATION DASHBOARD -->
   <div id="mainDashboardView" class="no-print hidden pb-36 animate-entrance">
-
     <header class="bg-emerald-700 text-white shadow-md sticky top-0 z-30">
       <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
-        <div>
+        <!-- RENTORA LOGO: DASHBOARD HEADER -->
+        <div class="flex items-center gap-3">
+          <svg class="w-8 h-8 shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="24" fill="#059669" />
+            <path d="M 22 68 A 34 34 0 1 1 78 68" stroke="#047857" stroke-width="4" stroke-dasharray="6 4" stroke-linecap="round" fill="none" />
+            <path d="M 28 64 A 28 28 0 1 1 72 64" stroke="#A7F3D0" stroke-width="2.5" stroke-opacity="0.6" fill="none" />
+            <path d="M 34 26 H 54 C 62.8 26 70 32.2 70 41 C 70 47.8 65.2 53.5 58.5 55.2 L 71 74 H 57.5 L 46.5 56 H 45 V 74 H 34 V 26 Z M 45 36 V 47 H 53.5 C 57 47 60 44.5 60 41.5 C 60 38.5 57 36 53.5 36 H 45 Z" fill="#0F172A" />
+          </svg>
           <div class="flex items-center gap-2">
-            <h1 class="text-xl font-bold tracking-tight">Rentora</h1>
-            <span class="text-[11px] bg-emerald-800 px-2.5 py-0.5 rounded-full border border-emerald-600 text-emerald-100">
+            <h1 class="text-xl font-extrabold tracking-tight text-white">Rentora</h1>
+            <span id="dbModeBadge" class="text-[11px] bg-emerald-800 px-2.5 py-0.5 rounded-full border border-emerald-600 text-emerald-100">
               Active
             </span>
           </div>
-          <p class="text-xs text-emerald-100">Boarding House Utility &amp; Rent Management</p>
         </div>
+
         <div class="flex flex-wrap items-center gap-2">
           <span id="currentUserBadge" class="text-xs bg-emerald-800 border border-emerald-600 px-3 py-1.5 rounded-full text-emerald-100 font-medium">
             Landlord: Ate Elena
           </span>
-          <button onclick="resetToSampleData()" 
-                  data-tip="Reset all records back to the default sample data."
-                  class="guide-hover text-xs bg-emerald-900 hover:bg-emerald-950 px-3 py-1.5 rounded-lg transition text-emerald-200 shadow-sm cursor-pointer">
+          <button onclick="resetToSampleData()" data-tip="Reset all records back to the default sample data." class="guide-hover text-xs bg-emerald-900 hover:bg-emerald-950 px-3 py-1.5 rounded-lg transition text-emerald-200 shadow-sm cursor-pointer">
             Load Sample Data
           </button>
-          <button onclick="handleLogout()" 
-                  data-tip="Sign out and return to the login screen."
-                  class="guide-hover text-xs bg-rose-700 hover:bg-rose-800 text-white px-3 py-1.5 rounded-lg transition shadow-sm font-medium cursor-pointer">
+          <button onclick="handleLogout()" data-tip="Sign out and return to the login screen." class="guide-hover text-xs bg-rose-700 hover:bg-rose-800 text-white px-3 py-1.5 rounded-lg transition shadow-sm font-medium cursor-pointer">
             Sign Out
           </button>
         </div>
@@ -295,38 +156,6 @@
     </header>
 
     <main class="max-w-6xl mx-auto px-4 mt-6 space-y-6">
-
-      <!-- 5-STEP INTERACTIVE WORKFLOW BAR -->
-      <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
-        <div class="flex items-center justify-between mb-3">
-          <p class="text-xs font-bold uppercase tracking-wider text-emerald-700">One Workflow. Five Clear Steps.</p>
-          <span class="text-[11px] text-slate-400">Click any step to jump to that action</span>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
-          <button onclick="focusWorkflowStep(1)" data-tip="Step 1: Enter your main electric bill and total building kWh." class="guide-hover flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 transition text-left cursor-pointer">
-            <span class="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center shrink-0">1</span>
-            <span class="font-medium text-slate-700">Configure Master Bill</span>
-          </button>
-          <button onclick="focusWorkflowStep(2)" data-tip="Step 2: Input or scan the room sub-meter dials." class="guide-hover flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 transition text-left cursor-pointer">
-            <span class="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center shrink-0">2</span>
-            <span class="font-medium text-slate-700">Input Room Dials</span>
-          </button>
-          <button onclick="focusWorkflowStep(3)" data-tip="Step 3: System automatically calculates exact kWh charges." class="guide-hover flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 transition text-left cursor-pointer">
-            <span class="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center shrink-0">3</span>
-            <span class="font-medium text-slate-700">Auto-Compute Rates</span>
-          </button>
-          <button onclick="focusWorkflowStep(4)" data-tip="Step 4: Issue a clear digital receipt or SMS reminder." class="guide-hover flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 transition text-left cursor-pointer">
-            <span class="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center shrink-0">4</span>
-            <span class="font-medium text-slate-700">Issue Receipt</span>
-          </button>
-          <button onclick="focusWorkflowStep(5)" data-tip="Step 5: Record Cash or GCash reference numbers." class="guide-hover flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 transition text-left cursor-pointer">
-            <span class="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center shrink-0">5</span>
-            <span class="font-medium text-slate-700">Record Payment</span>
-          </button>
-        </div>
-      </section>
-
-      <!-- DASHBOARD STATS -->
       <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm guide-hover" data-tip="Total number of registered rooms currently occupied.">
           <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">TOTAL ROOMS</p>
@@ -346,7 +175,6 @@
         </div>
       </section>
 
-      <!-- MASTER ELECTRIC & WATER RATE CALCULATOR -->
       <section id="masterRateSection" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 guide-hover" data-tip="Calculate rate per unit by dividing total electric bill by kWh used.">
         <div class="flex items-center justify-between cursor-pointer" onclick="toggleRatePanel()">
           <div class="flex items-center gap-2">
@@ -355,7 +183,6 @@
           </div>
           <button type="button" class="text-xs text-slate-400 font-bold uppercase tracking-wider hover:text-slate-600">TOGGLE SETTINGS</button>
         </div>
-
         <div id="ratePanel" class="mt-4 pt-4 border-t border-slate-100 grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
             <label class="block text-xs font-medium text-slate-600 mb-1">Main Electric Bill (₱)</label>
@@ -370,48 +197,32 @@
             <input type="number" step="0.01" min="0" id="cfgWaterFee" class="w-full text-sm border border-slate-300 rounded-xl p-2.5" value="150.00" />
           </div>
           <div class="flex items-end">
-            <button onclick="saveUtilityRates()" 
-                    data-tip="Update rate per kWh for future room calculations."
-                    class="guide-hover w-full bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium py-2.5 px-4 rounded-xl transition shadow-sm cursor-pointer">
+            <button onclick="saveUtilityRates()" data-tip="Update rate per kWh for future room calculations." class="guide-hover w-full bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium py-2.5 px-4 rounded-xl transition shadow-sm cursor-pointer">
               Update Rates
             </button>
           </div>
         </div>
       </section>
 
-      <!-- NAVIGATION TABS -->
       <div class="flex flex-wrap border-b border-slate-200 gap-6 text-sm font-semibold">
-        <button id="tabBtnTenants" onclick="switchTab('tenants')" 
-                data-tip="Manage room list, tenant details, and sub-meter dials."
-                class="guide-hover pb-2.5 border-b-2 border-emerald-600 text-emerald-700 cursor-pointer">
+        <button id="tabBtnTenants" onclick="switchTab('tenants')" data-tip="Manage room list, tenant details, and sub-meter dials." class="guide-hover pb-2.5 border-b-2 border-emerald-600 text-emerald-700 cursor-pointer">
           Tenants &amp; Rooms (<span id="countTenantsBadge">0</span>)
         </button>
-        <button id="tabBtnBilling" onclick="switchTab('billing')" 
-                data-tip="View billing history, send SMS reminders, confirm payments, and print receipts."
-                class="guide-hover pb-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 cursor-pointer">
+        <button id="tabBtnBilling" onclick="switchTab('billing')" data-tip="View billing history, send SMS reminders, confirm payments, and print receipts." class="guide-hover pb-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 cursor-pointer">
           Monthly Billing &amp; Invoices (<span id="countInvoicesBadge">0</span>)
         </button>
       </div>
 
-      <!-- TAB 1: TENANTS VIEW -->
       <div id="viewTenants" class="space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-3">
-          <input type="text" id="tenantSearch" oninput="renderTenants()" 
-                 data-tip="Filter any room or tenant name."
-                 placeholder="Search room or tenant..." 
-                 class="guide-hover text-sm border border-slate-300 rounded-xl px-3.5 py-2 w-64 focus:outline-emerald-600 shadow-sm" />
-          
-          <button onclick="openModal('addTenantModal')" 
-                  data-tip="Add a room, base rent, and initial sub-meter reading."
-                  class="guide-hover bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium px-4 py-2 rounded-xl transition shadow-sm cursor-pointer">
+          <input type="text" id="tenantSearch" oninput="renderTenants()" data-tip="Filter any room or tenant name." placeholder="Search room or tenant..." class="guide-hover text-sm border border-slate-300 rounded-xl px-3.5 py-2 w-64 focus:outline-emerald-600 shadow-sm" />
+          <button onclick="openModal('addTenantModal')" data-tip="Add a room, base rent, and initial sub-meter reading." class="guide-hover bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium px-4 py-2 rounded-xl transition shadow-sm cursor-pointer">
             + Add New Tenant
           </button>
         </div>
-
         <div id="tenantsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
       </div>
 
-      <!-- TAB 2: BILLING & INVOICES VIEW -->
       <div id="viewBilling" class="space-y-4 hidden">
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div class="flex gap-2">
@@ -419,9 +230,7 @@
             <button onclick="filterInvoices('unpaid')" class="invFilterBtn text-xs font-semibold px-3.5 py-1.5 rounded-lg border border-slate-200 bg-white text-slate-600 cursor-pointer" data-filter="unpaid">Unpaid / Partial</button>
             <button onclick="filterInvoices('paid')" class="invFilterBtn text-xs font-semibold px-3.5 py-1.5 rounded-lg border border-slate-200 bg-white text-slate-600 cursor-pointer" data-filter="paid">Fully Paid</button>
           </div>
-          <button onclick="openCreateInvoiceModal()" 
-                  data-tip="Compute a new bill using current sub-meter reading or OCR scan."
-                  class="guide-hover bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium px-4 py-2 rounded-xl transition shadow-sm cursor-pointer">
+          <button onclick="openCreateInvoiceModal()" data-tip="Compute a new bill using current sub-meter reading or OCR scan." class="guide-hover bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium px-4 py-2 rounded-xl transition shadow-sm cursor-pointer">
             + Calculate New Room Bill
           </button>
         </div>
@@ -443,12 +252,10 @@
           </table>
         </div>
       </div>
-
     </main>
 
-    <!-- MEMOJI GUIDE WIDGET (BOTTOM-LEFT) -->
+    <!-- MEMOJI GUIDE WIDGET -->
     <aside id="memojiWidget" class="fixed bottom-5 left-5 z-40 flex flex-col items-start pointer-events-none select-none">
-      
       <div id="guideSpeechBubble" class="pointer-events-none max-w-xs bg-slate-900/95 backdrop-blur-md text-white text-xs p-3.5 rounded-2xl rounded-bl-none shadow-2xl border border-slate-700/80 mb-3 transition-all duration-200 opacity-0 translate-y-2 invisible">
         <div class="flex items-center justify-between gap-2 border-b border-slate-800 pb-1.5 mb-1.5">
           <div class="flex items-center gap-1.5">
@@ -457,157 +264,98 @@
           </div>
           <span class="text-[9px] text-slate-400 font-mono">Active</span>
         </div>
-        <p id="guideSpeechText" class="text-slate-200 leading-snug">
-          Move your cursor over any button or card to see instructions.
-        </p>
+        <p id="guideSpeechText" class="text-slate-200 leading-snug">Move your cursor over any button or card to see instructions.</p>
       </div>
 
       <div id="memojiAvatarBtn" class="pointer-events-auto memoji-scene cursor-pointer" onclick="triggerMemojiWink()" title="Click Elena to wink">
         <div id="memojiHeadWrapper" class="memoji-head-wrapper relative w-20 h-24 flex flex-col items-center justify-center filter drop-shadow-xl">
-          
           <div class="absolute -top-1 w-20 h-20 rounded-full bg-stone-900 z-0"></div>
-
           <div id="memojiFace" class="memoji-skin relative w-16 h-18 rounded-[36px] border border-orange-300/40 z-10 flex flex-col items-center pt-1.5 pb-2 overflow-visible">
-            
             <div class="memoji-hair-top absolute -top-2.5 w-18 h-7 rounded-t-full rounded-b-2xl z-20"></div>
             <div class="absolute top-1.5 left-1.5 w-6 h-3 rounded-br-full bg-stone-900 z-20 transform -rotate-12"></div>
             <div class="absolute top-1 right-1.5 w-6 h-3 rounded-bl-full bg-stone-900 z-20 transform rotate-12"></div>
-
             <div id="eyebrowRow" class="w-12 flex justify-between mt-2.5 px-0.5 z-30 transition-transform">
               <div id="leftBrow" class="w-3.5 h-1 bg-stone-900 rounded-full transform -rotate-6"></div>
               <div id="rightBrow" class="w-3.5 h-1 bg-stone-900 rounded-full transform rotate-6"></div>
             </div>
-
             <div class="absolute top-5 w-14 flex justify-between z-40 pointer-events-none">
-              <div class="glass-rim w-6 h-5 rounded-full relative">
-                <div class="absolute top-0.5 left-1 w-1.5 h-1 bg-white/60 rounded-full transform -rotate-45"></div>
-              </div>
+              <div class="glass-rim w-6 h-5 rounded-full relative"></div>
               <div class="h-0.5 w-2 bg-amber-700 self-center"></div>
-              <div class="glass-rim w-6 h-5 rounded-full relative">
-                <div class="absolute top-0.5 left-1 w-1.5 h-1 bg-white/60 rounded-full transform -rotate-45"></div>
-              </div>
+              <div class="glass-rim w-6 h-5 rounded-full relative"></div>
             </div>
-
             <div class="w-12 flex justify-between px-1 mt-1 z-25 relative">
               <div class="memoji-sclera relative w-4 h-4 rounded-full overflow-hidden" id="leftEyeSocket">
                 <div class="eye-lid" id="leftLid"></div>
                 <div class="memoji-iris absolute w-2.5 h-2.5 rounded-full top-0.5 left-0.5 flex items-center justify-center" id="leftIris">
-                  <div class="w-1 h-1 bg-black rounded-full relative">
-                    <div class="absolute top-0 right-0 w-0.5 h-0.5 bg-white rounded-full"></div>
-                  </div>
+                  <div class="w-1 h-1 bg-black rounded-full"></div>
                 </div>
               </div>
-
               <div class="memoji-sclera relative w-4 h-4 rounded-full overflow-hidden" id="rightEyeSocket">
                 <div class="eye-lid" id="rightLid"></div>
                 <div class="memoji-iris absolute w-2.5 h-2.5 rounded-full top-0.5 left-0.5 flex items-center justify-center" id="rightIris">
-                  <div class="w-1 h-1 bg-black rounded-full relative">
-                    <div class="absolute top-0 right-0 w-0.5 h-0.5 bg-white rounded-full"></div>
-                  </div>
+                  <div class="w-1 h-1 bg-black rounded-full"></div>
                 </div>
               </div>
             </div>
-
             <div class="w-14 flex justify-between px-1 mt-0.5 z-20">
               <div class="w-3 h-1.5 rounded-full bg-rose-400/35 blur-[1px]"></div>
               <div class="w-3 h-1.5 rounded-full bg-rose-400/35 blur-[1px]"></div>
             </div>
-
             <div class="w-1.5 h-1.5 bg-amber-800/20 rounded-full -mt-1 z-20 shadow-sm"></div>
-
             <div id="memojiMouth" class="memoji-lips w-4 h-2 rounded-b-full rounded-t-sm mt-0.5 z-20 transition-all flex items-start justify-center overflow-hidden">
               <div class="w-2.5 h-0.5 bg-white rounded-b-sm opacity-90"></div>
             </div>
-
-            <div class="absolute top-9 -left-1 w-1.5 h-1.5 rounded-full bg-slate-100 shadow-md border border-slate-300 z-10"></div>
-            <div class="absolute top-9 -right-1 w-1.5 h-1.5 rounded-full bg-slate-100 shadow-md border border-slate-300 z-10"></div>
-
           </div>
-
           <div class="w-12 h-4 -mt-1.5 bg-emerald-800 rounded-t-2xl shadow-md border-t border-emerald-600 z-5"></div>
-
         </div>
       </div>
     </aside>
-
   </div>
 
-  <!-- MODAL: NEW TENANT SIGN UP -->
+  <!-- MODALS -->
   <div id="signUpModal" onclick="handleBackdropClick(event, 'signUpModal')" class="no-print fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
       <div class="flex justify-between items-center border-b pb-2">
-        <div>
-          <h3 class="serif-heading font-bold text-slate-900 text-lg">Register with your boarding house</h3>
-          <p class="text-xs text-slate-500">Create your tenant account and room profile</p>
-        </div>
+        <h3 class="serif-heading font-bold text-slate-900 text-lg">Register with your boarding house</h3>
         <button type="button" onclick="closeModal('signUpModal')" class="text-slate-400 hover:text-slate-600 font-bold text-xl cursor-pointer">&times;</button>
       </div>
       <form id="signUpForm" onsubmit="handleSignUpSubmit(event)" class="space-y-3">
         <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-semibold text-slate-600 mb-1">Room Number</label>
-            <input type="text" id="regRoom" required placeholder="e.g. Room 104" class="w-full text-sm border rounded-xl p-2.5" />
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-600 mb-1">Username or Email</label>
-            <input type="text" id="regUsername" required placeholder="e.g. juan104" class="w-full text-sm border rounded-xl p-2.5" />
-          </div>
+          <input type="text" id="regRoom" required placeholder="Room (e.g. Room 104)" class="w-full text-sm border rounded-xl p-2.5" />
+          <input type="text" id="regUsername" required placeholder="Username" class="w-full text-sm border rounded-xl p-2.5" />
         </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1">Full Name</label>
-          <input type="text" id="regName" required placeholder="e.g. Juan Dela Cruz" class="w-full text-sm border rounded-xl p-2.5" />
-        </div>
+        <input type="text" id="regName" required placeholder="Full Name" class="w-full text-sm border rounded-xl p-2.5" />
         <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-semibold text-slate-600 mb-1">Phone Number</label>
-            <input type="text" id="regPhone" required placeholder="0917-555-0199" class="w-full text-sm border rounded-xl p-2.5" />
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-600 mb-1">Starting Meter (kWh)</label>
-            <input type="number" step="0.01" min="0" id="regMeter" required placeholder="e.g. 500" class="w-full text-sm border rounded-xl p-2.5" />
-          </div>
+          <input type="text" id="regPhone" required placeholder="Phone Number" class="w-full text-sm border rounded-xl p-2.5" />
+          <input type="number" step="0.01" min="0" id="regMeter" required placeholder="Starting kWh" class="w-full text-sm border rounded-xl p-2.5" />
         </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1">Create Password</label>
-          <input type="password" id="regPassword" required placeholder="Create a password" class="w-full text-sm border rounded-xl p-2.5" />
-        </div>
+        <input type="password" id="regPassword" required placeholder="Create Password" class="w-full text-sm border rounded-xl p-2.5" />
         <div class="flex justify-end gap-2 pt-3">
           <button type="button" onclick="closeModal('signUpModal')" class="px-4 py-2 border rounded-full text-xs font-semibold text-slate-600 cursor-pointer">Cancel</button>
-          <button type="submit" class="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-full text-xs font-bold cursor-pointer">Complete Sign Up</button>
+          <button type="submit" class="px-5 py-2 bg-slate-900 text-white rounded-full text-xs font-bold cursor-pointer">Complete Sign Up</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- MODAL: FORGOT PASSWORD / RESET PASSWORD -->
   <div id="resetPasswordModal" onclick="handleBackdropClick(event, 'resetPasswordModal')" class="no-print fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
     <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl space-y-4">
       <div class="flex justify-between items-center border-b pb-2">
-        <div>
-          <h3 class="serif-heading font-bold text-slate-900 text-lg">Reset your password</h3>
-          <p class="text-xs text-slate-500">Enter your registered username or email</p>
-        </div>
+        <h3 class="serif-heading font-bold text-slate-900 text-lg">Reset your password</h3>
         <button type="button" onclick="closeModal('resetPasswordModal')" class="text-slate-400 hover:text-slate-600 font-bold text-xl cursor-pointer">&times;</button>
       </div>
       <div id="resetErrorAlert" class="hidden p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-700 font-medium"></div>
       <form id="resetPasswordForm" onsubmit="handleResetPasswordSubmit(event)" class="space-y-3">
-        <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1">Username or Email</label>
-          <input type="text" id="resetUsername" required placeholder="e.g. elena" class="w-full text-sm border rounded-xl p-2.5" />
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1">New Password</label>
-          <input type="password" id="resetNewPassword" required placeholder="Enter new password" class="w-full text-sm border rounded-xl p-2.5" />
-        </div>
+        <input type="text" id="resetUsername" required placeholder="Registered Username" class="w-full text-sm border rounded-xl p-2.5" />
+        <input type="password" id="resetNewPassword" required placeholder="New Password" class="w-full text-sm border rounded-xl p-2.5" />
         <div class="flex justify-end gap-2 pt-2">
           <button type="button" onclick="closeModal('resetPasswordModal')" class="px-4 py-2 border rounded-full text-xs font-semibold text-slate-600 cursor-pointer">Cancel</button>
-          <button type="submit" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full text-xs font-bold cursor-pointer">Save New Password</button>
+          <button type="submit" class="px-5 py-2 bg-emerald-600 text-white rounded-full text-xs font-bold cursor-pointer">Save New Password</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- MODAL: ADD TENANT -->
   <div id="addTenantModal" onclick="handleBackdropClick(event, 'addTenantModal')" class="no-print fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
       <div class="flex justify-between items-center border-b pb-2">
@@ -615,27 +363,12 @@
         <button type="button" onclick="closeModal('addTenantModal')" class="text-slate-400 hover:text-slate-600 font-bold text-xl cursor-pointer">&times;</button>
       </div>
       <form id="tenantForm" onsubmit="handleSaveTenant(event)" class="space-y-3">
-        <div>
-          <label class="block text-xs font-medium text-slate-600">Room Identifier</label>
-          <input type="text" id="tRoom" required placeholder="e.g. Room 103" class="w-full text-sm border rounded-xl p-2.5" />
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-slate-600">Tenant Full Name</label>
-          <input type="text" id="tName" required placeholder="e.g. Maria Santos" class="w-full text-sm border rounded-xl p-2.5" />
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-slate-600">Phone Number</label>
-          <input type="text" id="tPhone" required placeholder="e.g. 0919-555-0104" class="w-full text-sm border rounded-xl p-2.5" />
-        </div>
+        <input type="text" name="room_no" id="tRoom" required placeholder="Room Identifier (e.g. Room 103)" class="w-full text-sm border rounded-xl p-2.5" />
+        <input type="text" name="tenant_name" id="tName" required placeholder="Tenant Full Name" class="w-full text-sm border rounded-xl p-2.5" />
+        <input type="text" name="phone" id="tPhone" required placeholder="Phone Number" class="w-full text-sm border rounded-xl p-2.5" />
         <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-medium text-slate-600">Monthly Rent (₱)</label>
-            <input type="number" step="0.01" min="0" id="tRent" required placeholder="e.g. 2700" class="w-full text-sm border rounded-xl p-2.5" />
-          </div>
-          <div>
-            <label class="block text-xs font-medium text-slate-600">Initial Sub-Meter (kWh)</label>
-            <input type="number" step="0.01" min="0" id="tMeter" required placeholder="e.g. 1050" class="w-full text-sm border rounded-xl p-2.5" />
-          </div>
+          <input type="number" step="0.01" min="0" name="base_rent" id="tRent" required placeholder="Monthly Rent (₱)" class="w-full text-sm border rounded-xl p-2.5" />
+          <input type="number" step="0.01" min="0" name="current_meter" id="tMeter" required placeholder="Initial Sub-Meter (kWh)" class="w-full text-sm border rounded-xl p-2.5" />
         </div>
         <div class="flex justify-end gap-2 pt-3">
           <button type="button" onclick="closeModal('addTenantModal')" class="px-4 py-2 border rounded-xl text-sm text-slate-600 cursor-pointer">Cancel</button>
@@ -645,7 +378,6 @@
     </div>
   </div>
 
-  <!-- MODAL: CALCULATE ROOM BILL -->
   <div id="createInvoiceModal" onclick="handleBackdropClick(event, 'createInvoiceModal')" class="no-print fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
     <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-xl space-y-4">
       <div class="flex justify-between items-center border-b pb-2">
@@ -653,14 +385,8 @@
         <button type="button" onclick="closeModal('createInvoiceModal')" class="text-slate-400 hover:text-slate-600 font-bold text-xl cursor-pointer">&times;</button>
       </div>
       <form id="invoiceForm" onsubmit="handleCreateInvoice(event)" class="space-y-3">
-        <div>
-          <label class="block text-xs font-medium text-slate-600">Select Room Tenant</label>
-          <select id="invTenantSelect" onchange="onTenantSelectedForBill()" required class="w-full text-sm border rounded-xl p-2.5"></select>
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-slate-600">Billing Period</label>
-          <input type="month" id="invPeriod" required class="w-full text-sm border rounded-xl p-2.5" />
-        </div>
+        <select id="invTenantSelect" onchange="onTenantSelectedForBill()" required class="w-full text-sm border rounded-xl p-2.5"></select>
+        <input type="month" id="invPeriod" required class="w-full text-sm border rounded-xl p-2.5" />
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-medium text-slate-600">Previous Reading (kWh)</label>
@@ -669,20 +395,15 @@
           <div>
             <div class="flex justify-between items-center">
               <label class="block text-xs font-medium text-slate-600">Current Reading (kWh)</label>
-              <button type="button" onclick="simulateOcrMeterScan()" class="text-[11px] text-emerald-700 font-semibold hover:underline cursor-pointer">
-                OCR Scan Dial
-              </button>
+              <button type="button" onclick="simulateOcrMeterScan()" class="text-[11px] text-emerald-700 font-semibold hover:underline cursor-pointer">OCR Scan Dial</button>
             </div>
             <input type="number" step="0.01" min="0" id="invCurrReading" oninput="calculateLivePreview()" required class="w-full text-sm border rounded-xl p-2.5 font-semibold" />
           </div>
         </div>
-
         <div id="meterValidationAlert" class="hidden p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-700 font-medium">
           Warning: Current meter reading cannot be lower than the previous reading.
         </div>
-
         <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs space-y-1.5 mt-2">
-          <p class="font-semibold text-slate-700">Computation Preview:</p>
           <div class="flex justify-between">
             <span>Electricity (<span id="prevKwhUsed">0.00</span> kWh @ ₱<span id="prevRate">0.00</span>):</span>
             <span class="font-medium">₱<span id="prevPowerCost">0.00</span></span>
@@ -700,7 +421,6 @@
             <span>₱<span id="prevGrandTotal">0.00</span></span>
           </div>
         </div>
-
         <div class="flex justify-end gap-2 pt-3">
           <button type="button" onclick="closeModal('createInvoiceModal')" class="px-4 py-2 border rounded-xl text-sm text-slate-600 cursor-pointer">Cancel</button>
           <button type="submit" class="px-4 py-2 bg-emerald-600 text-white rounded-xl text-sm font-medium hover:bg-emerald-700 cursor-pointer">Generate Invoice</button>
@@ -709,7 +429,6 @@
     </div>
   </div>
 
-  <!-- MODAL: RECORD PAYMENT -->
   <div id="paymentModal" onclick="handleBackdropClick(event, 'paymentModal')" class="no-print fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
     <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl space-y-4">
       <div class="flex justify-between items-center border-b pb-2">
@@ -720,22 +439,13 @@
         <input type="hidden" id="payInvoiceId" />
         <p class="text-xs text-slate-500">Invoice: <span id="payInvoiceDisplay" class="font-semibold text-slate-800"></span></p>
         <p class="text-xs text-slate-500">Remaining Balance: <span id="payAmountDisplay" class="font-bold text-emerald-700 text-sm"></span></p>
-        <div>
-          <label class="block text-xs font-medium text-slate-600">Amount Paid (₱)</label>
-          <input type="number" step="0.01" min="0.01" id="payAmountInput" required class="w-full text-sm border rounded-xl p-2.5 font-semibold" />
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-slate-600">Payment Channel</label>
-          <select id="payChannel" class="w-full text-sm border rounded-xl p-2.5">
-            <option value="GCash">GCash Transfer</option>
-            <option value="Cash">Cash Handover</option>
-            <option value="Bank">Bank Deposit</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-slate-600">GCash Reference / Note</label>
-          <input type="text" id="payRef" placeholder="e.g. Ref # 992812 or Handed to Elena" class="w-full text-sm border rounded-xl p-2.5" />
-        </div>
+        <input type="number" step="0.01" min="0.01" id="payAmountInput" required class="w-full text-sm border rounded-xl p-2.5 font-semibold" />
+        <select id="payChannel" class="w-full text-sm border rounded-xl p-2.5">
+          <option value="GCash">GCash Transfer</option>
+          <option value="Cash">Cash Handover</option>
+          <option value="Bank">Bank Deposit</option>
+        </select>
+        <input type="text" id="payRef" placeholder="GCash Ref # or Note" class="w-full text-sm border rounded-xl p-2.5" />
         <div class="flex justify-end gap-2 pt-2">
           <button type="button" onclick="closeModal('paymentModal')" class="px-3 py-1.5 border rounded-xl text-xs text-slate-600 cursor-pointer">Cancel</button>
           <button type="submit" class="px-3 py-1.5 bg-emerald-600 text-white rounded-xl text-xs font-medium hover:bg-emerald-700 cursor-pointer">Confirm Payment</button>
@@ -744,17 +454,14 @@
     </div>
   </div>
 
-  <!-- MODAL: AUTOMATED SMS REMINDER -->
   <div id="smsModal" onclick="handleBackdropClick(event, 'smsModal')" class="no-print fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
       <div class="flex justify-between items-center border-b pb-2">
         <h3 class="font-bold text-slate-800 text-base">Automated SMS Bill Reminder</h3>
         <button type="button" onclick="closeModal('smsModal')" class="text-slate-400 hover:text-slate-600 font-bold text-xl cursor-pointer">&times;</button>
       </div>
-      <div class="space-y-2 text-xs">
-        <p class="text-slate-500">Recipient: <span id="smsRecipient" class="font-semibold text-slate-800"></span></p>
-        <textarea id="smsMessageBox" rows="5" class="w-full border border-slate-300 rounded-xl p-3 text-slate-700 font-mono text-xs"></textarea>
-      </div>
+      <p class="text-xs text-slate-500">Recipient: <span id="smsRecipient" class="font-semibold text-slate-800"></span></p>
+      <textarea id="smsMessageBox" rows="5" class="w-full border border-slate-300 rounded-xl p-3 text-slate-700 font-mono text-xs"></textarea>
       <div class="flex justify-end gap-2">
         <button type="button" onclick="closeModal('smsModal')" class="px-3 py-1.5 border rounded-xl text-xs text-slate-600 cursor-pointer">Close</button>
         <button type="button" onclick="copySmsText()" class="px-4 py-1.5 bg-emerald-600 text-white rounded-xl text-xs font-medium hover:bg-emerald-700 cursor-pointer">Copy SMS Text</button>
@@ -762,7 +469,6 @@
     </div>
   </div>
 
-  <!-- MODAL: PRINTABLE STATEMENT OF ACCOUNT -->
   <div id="receiptModal" onclick="handleBackdropClick(event, 'receiptModal')" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
     <div id="receiptCardWrapper" class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4 border border-slate-200">
       <div id="printableReceiptArea">
@@ -773,1042 +479,12 @@
         <div id="receiptContent" class="text-xs space-y-2 text-slate-700 mt-3"></div>
       </div>
       <div class="no-print flex justify-between items-center pt-3 border-t">
-        <button type="button" onclick="closeModal('receiptModal')" class="text-xs px-3.5 py-1.5 border rounded-xl text-slate-600 hover:bg-slate-100 cursor-pointer">Close</button>
-        <button type="button" onclick="window.print()" class="text-xs px-4 py-1.5 bg-slate-800 text-white rounded-xl hover:bg-slate-900 font-medium shadow-sm cursor-pointer">Print Statement</button>
+        <button type="button" onclick="closeModal('receiptModal')" class="text-xs px-3.5 py-1.5 border rounded-xl text-slate-600 cursor-pointer">Close</button>
+        <button type="button" onclick="window.print()" class="text-xs px-4 py-1.5 bg-slate-800 text-white rounded-xl hover:bg-slate-900 font-medium cursor-pointer">Print Statement</button>
       </div>
     </div>
   </div>
 
-  <script>
-    const STORAGE_KEY = 'rentora_verified_data_v5';
-    const AUTH_SESSION_KEY = 'rentora_auth_session';
-    let speechTimer = null;
-    let activeFilter = 'all';
-
-    // Exact 2-decimal exponential rounding
-    function round2(value) {
-      const num = Number(value);
-      if (isNaN(num) || !isFinite(num)) return 0;
-      return Number(Math.round(num + 'e2') + 'e-2');
-    }
-
-    let appData = {
-      config: {
-        mainBill: 7850.00,
-        mainKwh: 550.00,
-        waterFee: 150.00,
-        ratePerKwh: 14.27
-      },
-      users: {
-        elena: 'admin123',
-        admin: 'admin123'
-      },
-      tenants: [],
-      invoices: []
-    };
-
-    function init() {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        try {
-          const parsed = JSON.parse(stored);
-          if (parsed && parsed.config && Array.isArray(parsed.tenants) && Array.isArray(parsed.invoices)) {
-            const bill = typeof parsed.config.mainBill === 'number' ? round2(parsed.config.mainBill) : 7850.00;
-            const kwh = (typeof parsed.config.mainKwh === 'number' && parsed.config.mainKwh > 0) ? round2(parsed.config.mainKwh) : 550.00;
-            const water = typeof parsed.config.waterFee === 'number' ? round2(parsed.config.waterFee) : 150.00;
-            const rate = round2(bill / kwh);
-
-            appData = {
-              config: {
-                mainBill: bill,
-                mainKwh: kwh,
-                waterFee: water,
-                ratePerKwh: rate
-              },
-              users: (parsed.users && typeof parsed.users === 'object') ? parsed.users : { elena: 'admin123', admin: 'admin123' },
-              tenants: parsed.tenants.map(t => ({
-                ...t,
-                rent: round2(t.rent),
-                currentMeter: round2(t.currentMeter)
-              })),
-              invoices: parsed.invoices.map(inv => ({
-                ...inv,
-                prevReading: round2(inv.prevReading),
-                currReading: round2(inv.currReading),
-                kwhUsed: round2(inv.kwhUsed),
-                ratePerKwh: round2(inv.ratePerKwh),
-                powerAmount: round2(inv.powerAmount),
-                waterAmount: round2(inv.waterAmount),
-                rentAmount: round2(inv.rentAmount),
-                totalAmount: round2(inv.totalAmount),
-                amountPaid: round2(inv.amountPaid !== undefined ? inv.amountPaid : (inv.status === 'Paid' ? inv.totalAmount : 0))
-              }))
-            };
-          } else {
-            loadDefaultSampleData();
-          }
-        } catch (e) {
-          loadDefaultSampleData();
-        }
-      } else {
-        loadDefaultSampleData();
-      }
-
-      checkLoginSession();
-      updateRateDisplay();
-      renderAll();
-      setupMemojiTracker();
-      setupKeyboardShortcuts();
-    }
-
-    function togglePasswordVisibility(inputId, iconId) {
-      const input = document.getElementById(inputId);
-      const icon = document.getElementById(iconId);
-      if (!input || !icon) return;
-
-      if (input.type === 'password') {
-        input.type = 'text';
-        icon.innerHTML = `
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>
-        `;
-      } else {
-        input.type = 'password';
-        icon.innerHTML = `
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-        `;
-      }
-    }
-
-    function handleSignUpSubmit(e) {
-      e.preventDefault();
-      const room = document.getElementById('regRoom').value.trim();
-      const username = document.getElementById('regUsername').value.trim().toLowerCase();
-      const name = document.getElementById('regName').value.trim();
-      const phone = document.getElementById('regPhone').value.trim();
-      const rawMeter = parseFloat(document.getElementById('regMeter').value);
-      const pass = document.getElementById('regPassword').value.trim();
-
-      if (!username || !pass || isNaN(rawMeter) || rawMeter < 0) {
-        alert('Please enter valid registration details and a non-negative starting meter reading.');
-        return;
-      }
-
-      if (appData.users[username]) {
-        alert('That username is already registered. Please choose another username.');
-        return;
-      }
-
-      const duplicateRoom = appData.tenants.some(t => t.room.toLowerCase() === room.toLowerCase());
-      if (duplicateRoom) {
-        alert('That room number is already registered.');
-        return;
-      }
-
-      const meter = round2(rawMeter);
-      appData.users[username] = pass;
-      appData.tenants.push({
-        id: 't_' + Date.now(),
-        room: room,
-        username: username,
-        name: name,
-        phone: phone,
-        rent: 2600.00,
-        currentMeter: meter
-      });
-
-      saveState();
-      closeModal('signUpModal');
-      document.getElementById('signUpForm').reset();
-
-      document.getElementById('loginUsername').value = username;
-      document.getElementById('loginPassword').value = pass;
-      const successBox = document.getElementById('loginSuccessAlert');
-      document.getElementById('loginErrorAlert').classList.add('hidden');
-      successBox.innerText = `Account registered for ${name} (${room})! Click Sign in to continue.`;
-      successBox.classList.remove('hidden');
-    }
-
-    function handleResetPasswordSubmit(e) {
-      e.preventDefault();
-      const username = document.getElementById('resetUsername').value.trim().toLowerCase();
-      const newPass = document.getElementById('resetNewPassword').value.trim();
-      const errBox = document.getElementById('resetErrorAlert');
-
-      if (!username || !newPass) return;
-
-      if (!appData.users[username]) {
-        errBox.innerText = `No account found for "${username}". Please check your spelling or sign up first.`;
-        errBox.classList.remove('hidden');
-        return;
-      }
-
-      errBox.classList.add('hidden');
-      appData.users[username] = newPass;
-      saveState();
-      closeModal('resetPasswordModal');
-      document.getElementById('resetPasswordForm').reset();
-
-      document.getElementById('loginUsername').value = username;
-      document.getElementById('loginPassword').value = newPass;
-      const successBox = document.getElementById('loginSuccessAlert');
-      document.getElementById('loginErrorAlert').classList.add('hidden');
-      successBox.innerText = `Password updated for "${username}". You can now sign in.`;
-      successBox.classList.remove('hidden');
-    }
-
-    function checkLoginSession() {
-      const isLogged = localStorage.getItem(AUTH_SESSION_KEY) || sessionStorage.getItem(AUTH_SESSION_KEY);
-      if (isLogged) {
-        showDashboardView(isLogged);
-      } else {
-        showLoginView();
-      }
-    }
-
-    function showDashboardView(userTitle) {
-      document.getElementById('loginScreen').classList.add('hidden');
-      document.getElementById('mainDashboardView').classList.remove('hidden');
-      if (userTitle && userTitle !== 'true') {
-        document.getElementById('currentUserBadge').innerText = userTitle;
-      }
-    }
-
-    function showLoginView() {
-      hideGuideSpeech();
-      document.getElementById('mainDashboardView').classList.add('hidden');
-      document.getElementById('loginScreen').classList.remove('hidden');
-    }
-
-    function handleLoginSubmit(e) {
-      e.preventDefault();
-      const user = document.getElementById('loginUsername').value.trim().toLowerCase();
-      const pass = document.getElementById('loginPassword').value.trim();
-      const remember = document.getElementById('rememberMe').checked;
-      const card = document.getElementById('loginCard');
-      const errorBox = document.getElementById('loginErrorAlert');
-      const successBox = document.getElementById('loginSuccessAlert');
-
-      successBox.classList.add('hidden');
-
-      const storedPass = appData.users && appData.users[user];
-      const isDefaultAdmin = (user === 'elena' || user === 'admin') && (pass === 'admin123' || pass === 'rentora');
-
-      if ((storedPass && storedPass === pass) || isDefaultAdmin) {
-        errorBox.classList.add('hidden');
-        const label = (user === 'elena' || user === 'admin') ? 'Landlord: Ate Elena' : `Tenant: ${user}`;
-        if (remember) {
-          localStorage.setItem(AUTH_SESSION_KEY, label);
-        } else {
-          sessionStorage.setItem(AUTH_SESSION_KEY, label);
-        }
-        showDashboardView(label);
-      } else {
-        errorBox.innerText = 'Invalid username or password. Use elena / admin123 or sign up.';
-        errorBox.classList.remove('hidden');
-        card.classList.remove('animate-shake');
-        void card.offsetWidth;
-        card.classList.add('animate-shake');
-      }
-    }
-
-    function handleLogout() {
-      localStorage.removeItem(AUTH_SESSION_KEY);
-      sessionStorage.removeItem(AUTH_SESSION_KEY);
-      showLoginView();
-    }
-
-    function focusWorkflowStep(step) {
-      if (step === 1) {
-        document.getElementById('ratePanel').classList.remove('hidden');
-        document.getElementById('cfgMainBill').focus();
-      } else if (step === 2 || step === 3) {
-        switchTab('billing');
-        openCreateInvoiceModal();
-      } else if (step === 4 || step === 5) {
-        switchTab('billing');
-      }
-    }
-
-    function simulateOcrMeterScan() {
-      const prevRaw = parseFloat(document.getElementById('invPrevReading').value);
-      const prev = isNaN(prevRaw) ? 800.00 : round2(prevRaw);
-      const scannedValue = round2(prev + Math.floor(Math.random() * 45) + 25);
-      document.getElementById('invCurrReading').value = scannedValue.toFixed(2);
-      calculateLivePreview();
-      showGuideSpeech(`OCR Camera Scan detected sub-meter reading: ${scannedValue.toFixed(2)} kWh.`, 3000);
-    }
-
-    function saveState() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
-      renderAll();
-    }
-
-    function loadDefaultSampleData() {
-      appData = {
-        config: {
-          mainBill: 7850.00,
-          mainKwh: 550.00,
-          waterFee: 150.00,
-          ratePerKwh: 14.27
-        },
-        users: {
-          elena: 'admin123',
-          admin: 'admin123'
-        },
-        tenants: [
-          { id: 't1', room: 'Room 101', name: 'Marco Ramos', phone: '0917-555-0101', rent: 2600.00, currentMeter: 1240.00 },
-          { id: 't2', room: 'Room 102', name: 'Chloe Anne Santos', phone: '0918-555-0102', rent: 2800.00, currentMeter: 890.00 }
-        ],
-        invoices: [
-          {
-            id: 'INV-2026-001',
-            tenantId: 't1',
-            room: 'Room 101',
-            tenantName: 'Marco Ramos',
-            period: '2026-08',
-            prevReading: 1180.00,
-            currReading: 1240.00,
-            kwhUsed: 60.00,
-            ratePerKwh: 14.27,
-            powerAmount: 856.20,
-            waterAmount: 150.00,
-            rentAmount: 2600.00,
-            totalAmount: 3606.20,
-            amountPaid: 3606.20,
-            status: 'Paid',
-            paidAt: '2026-09-02',
-            payMethod: 'GCash (Ref # 88201)',
-            createdAt: '2026-09-01'
-          },
-          {
-            id: 'INV-2026-002',
-            tenantId: 't2',
-            room: 'Room 102',
-            tenantName: 'Chloe Anne Santos',
-            period: '2026-09',
-            prevReading: 820.00,
-            currReading: 890.00,
-            kwhUsed: 70.00,
-            ratePerKwh: 14.27,
-            powerAmount: 998.90,
-            waterAmount: 150.00,
-            rentAmount: 2800.00,
-            totalAmount: 3948.90,
-            amountPaid: 0.00,
-            status: 'Unpaid',
-            paidAt: null,
-            payMethod: null,
-            createdAt: '2026-09-25'
-          }
-        ]
-      };
-      saveState();
-    }
-
-    function resetToSampleData() {
-      if (confirm('Reset all records to default sample data?')) {
-        loadDefaultSampleData();
-        updateRateDisplay();
-        showGuideSpeech('Sample data restored!', 3000);
-      }
-    }
-
-    function toggleRatePanel() {
-      document.getElementById('ratePanel').classList.toggle('hidden');
-    }
-
-    function saveUtilityRates() {
-      const rawBill = parseFloat(document.getElementById('cfgMainBill').value);
-      const rawKwh = parseFloat(document.getElementById('cfgMainKwh').value);
-      const rawWater = parseFloat(document.getElementById('cfgWaterFee').value);
-
-      if (isNaN(rawBill) || rawBill < 0) {
-        alert('Please enter a valid Main Electric Bill amount (0 or greater).');
-        return;
-      }
-      if (isNaN(rawKwh) || rawKwh <= 0) {
-        alert('Total kWh on Main Bill must be greater than zero to prevent divide-by-zero errors.');
-        return;
-      }
-      if (isNaN(rawWater) || rawWater < 0) {
-        alert('Please enter a valid Fixed Water Fee (0 or greater).');
-        return;
-      }
-
-      const bill = round2(rawBill);
-      const kwh = round2(rawKwh);
-      const water = round2(rawWater);
-      const rate = round2(bill / kwh);
-
-      appData.config = {
-        mainBill: bill,
-        mainKwh: kwh,
-        waterFee: water,
-        ratePerKwh: rate
-      };
-      saveState();
-      updateRateDisplay();
-      showGuideSpeech(`Utility rate updated to ₱${rate.toFixed(2)} per kWh.`, 3000);
-    }
-
-    function updateRateDisplay() {
-      document.getElementById('cfgMainBill').value = round2(appData.config.mainBill).toFixed(2);
-      document.getElementById('cfgMainKwh').value = round2(appData.config.mainKwh).toFixed(2);
-      document.getElementById('cfgWaterFee').value = round2(appData.config.waterFee).toFixed(2);
-      document.getElementById('statPowerRate').innerText = `₱${round2(appData.config.ratePerKwh).toFixed(2)} / kWh`;
-    }
-
-    function switchTab(tab) {
-      const tenantsView = document.getElementById('viewTenants');
-      const billingView = document.getElementById('viewBilling');
-      const tBtn = document.getElementById('tabBtnTenants');
-      const bBtn = document.getElementById('tabBtnBilling');
-
-      if (tab === 'tenants') {
-        tenantsView.classList.remove('hidden');
-        billingView.classList.add('hidden');
-        tBtn.className = 'guide-hover pb-2.5 border-b-2 border-emerald-600 text-emerald-700 font-semibold cursor-pointer';
-        bBtn.className = 'guide-hover pb-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 font-semibold cursor-pointer';
-      } else {
-        billingView.classList.remove('hidden');
-        tenantsView.classList.add('hidden');
-        bBtn.className = 'guide-hover pb-2.5 border-b-2 border-emerald-600 text-emerald-700 font-semibold cursor-pointer';
-        tBtn.className = 'guide-hover pb-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 font-semibold cursor-pointer';
-      }
-    }
-
-    function handleSaveTenant(e) {
-      e.preventDefault();
-      const room = document.getElementById('tRoom').value.trim();
-      const name = document.getElementById('tName').value.trim();
-      const phone = document.getElementById('tPhone').value.trim();
-      const rawRent = parseFloat(document.getElementById('tRent').value);
-      const rawMeter = parseFloat(document.getElementById('tMeter').value);
-
-      if (isNaN(rawRent) || rawRent < 0 || isNaN(rawMeter) || rawMeter < 0) {
-        alert('Rent and initial meter reading must be valid non-negative numbers.');
-        return;
-      }
-
-      const duplicateRoom = appData.tenants.some(t => t.room.toLowerCase() === room.toLowerCase());
-      if (duplicateRoom) {
-        alert('A tenant is already registered for ' + room + '.');
-        return;
-      }
-
-      appData.tenants.push({
-        id: 't_' + Date.now(),
-        room: room,
-        name: name,
-        phone: phone,
-        rent: round2(rawRent),
-        currentMeter: round2(rawMeter)
-      });
-
-      saveState();
-      closeModal('addTenantModal');
-      document.getElementById('tenantForm').reset();
-      showGuideSpeech(`Added ${name} to ${room}.`, 3000);
-    }
-
-    function deleteTenant(id) {
-      if (confirm('Delete this tenant record? Historical invoices will remain saved.')) {
-        appData.tenants = appData.tenants.filter(t => t.id !== id);
-        saveState();
-      }
-    }
-
-    function renderTenants() {
-      const grid = document.getElementById('tenantsGrid');
-      const search = (document.getElementById('tenantSearch').value || '').toLowerCase();
-      grid.innerHTML = '';
-
-      const filtered = appData.tenants.filter(t => 
-        t.room.toLowerCase().includes(search) || t.name.toLowerCase().includes(search)
-      );
-
-      if (filtered.length === 0) {
-        grid.innerHTML = '<div class="col-span-full py-8 text-center text-sm text-slate-400">No rooms found.</div>';
-        return;
-      }
-
-      filtered.forEach(t => {
-        const card = document.createElement('div');
-        card.className = 'bg-white rounded-2xl border border-slate-200 shadow-sm p-4 hover:border-slate-300 transition flex flex-col justify-between';
-        card.innerHTML = `
-          <div>
-            <div class="flex justify-between items-start">
-              <span class="text-xs font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded">${t.room} / MONTHLY</span>
-              <button type="button" onclick="deleteTenant('${t.id}')" class="text-xs text-rose-500 hover:text-rose-700 font-medium cursor-pointer">Remove</button>
-            </div>
-            <h3 class="font-bold text-slate-800 text-base mt-2">${t.name}</h3>
-            <p class="text-xs text-slate-500">${t.phone}</p>
-            <div class="mt-4 pt-3 border-t border-slate-100 space-y-1 text-xs">
-              <div class="flex justify-between text-slate-600">
-                <span>Base Rent:</span>
-                <span class="font-semibold text-slate-800">₱${round2(t.rent).toFixed(2)}</span>
-              </div>
-              <div class="flex justify-between text-slate-600">
-                <span>Water Share:</span>
-                <span class="font-semibold text-slate-800">₱${round2(appData.config.waterFee).toFixed(2)}</span>
-              </div>
-              <div class="flex justify-between text-slate-600">
-                <span>Last Meter Reading:</span>
-                <span class="font-semibold text-slate-800">${round2(t.currentMeter).toFixed(2)} kWh</span>
-              </div>
-            </div>
-          </div>
-          <button type="button" onclick="prepareBillForTenant('${t.id}')" 
-                  data-tip="Generate monthly bill for ${t.name}."
-                  class="guide-hover mt-4 w-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-medium text-xs py-2.5 rounded-xl transition border border-emerald-200 cursor-pointer">
-            Generate Room Bill
-          </button>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    function prepareBillForTenant(tenantId) {
-      switchTab('billing');
-      openCreateInvoiceModal();
-      document.getElementById('invTenantSelect').value = tenantId;
-      onTenantSelectedForBill();
-    }
-
-    function openCreateInvoiceModal() {
-      const select = document.getElementById('invTenantSelect');
-      select.innerHTML = '<option value="">Select Tenant</option>';
-      appData.tenants.forEach(t => {
-        const opt = document.createElement('option');
-        opt.value = t.id;
-        opt.innerText = `${t.room} - ${t.name}`;
-        select.appendChild(opt);
-      });
-
-      const today = new Date();
-      document.getElementById('invPeriod').value = today.toISOString().substring(0, 7);
-      document.getElementById('invPrevReading').value = '';
-      document.getElementById('invCurrReading').value = '';
-      document.getElementById('meterValidationAlert').classList.add('hidden');
-      calculateLivePreview();
-      openModal('createInvoiceModal');
-    }
-
-    function onTenantSelectedForBill() {
-      const tenantId = document.getElementById('invTenantSelect').value;
-      const tenant = appData.tenants.find(t => t.id === tenantId);
-      if (tenant) {
-        document.getElementById('invPrevReading').value = round2(tenant.currentMeter).toFixed(2);
-        calculateLivePreview();
-      } else {
-        document.getElementById('invPrevReading').value = '';
-        calculateLivePreview();
-      }
-    }
-
-    function calculateLivePreview() {
-      const tenantId = document.getElementById('invTenantSelect').value;
-      const tenant = appData.tenants.find(t => t.id === tenantId);
-      const prevRaw = parseFloat(document.getElementById('invPrevReading').value);
-      const prev = isNaN(prevRaw) ? 0 : round2(prevRaw);
-      const currStr = document.getElementById('invCurrReading').value.trim();
-      const currParsed = parseFloat(currStr);
-      const alertBox = document.getElementById('meterValidationAlert');
-
-      let kwhUsed = 0;
-      if (currStr !== '' && !isNaN(currParsed)) {
-        const curr = round2(currParsed);
-        if (curr < prev) {
-          alertBox.classList.remove('hidden');
-          kwhUsed = 0;
-        } else {
-          alertBox.classList.add('hidden');
-          kwhUsed = round2(curr - prev);
-        }
-      } else {
-        alertBox.classList.add('hidden');
-      }
-
-      const rate = round2(appData.config.ratePerKwh);
-      const powerCost = round2(kwhUsed * rate);
-      const waterCost = round2(appData.config.waterFee);
-      const rentCost = tenant ? round2(tenant.rent) : 0;
-      const grandTotal = round2(powerCost + waterCost + rentCost);
-
-      document.getElementById('prevKwhUsed').innerText = kwhUsed.toFixed(2);
-      document.getElementById('prevRate').innerText = rate.toFixed(2);
-      document.getElementById('prevPowerCost').innerText = powerCost.toFixed(2);
-      document.getElementById('prevWaterCost').innerText = waterCost.toFixed(2);
-      document.getElementById('prevRentCost').innerText = rentCost.toFixed(2);
-      document.getElementById('prevGrandTotal').innerText = grandTotal.toFixed(2);
-    }
-
-    function handleCreateInvoice(e) {
-      e.preventDefault();
-      const tenantId = document.getElementById('invTenantSelect').value;
-      const tenant = appData.tenants.find(t => t.id === tenantId);
-      if (!tenant) {
-        alert('Please choose a tenant.');
-        return;
-      }
-
-      const period = document.getElementById('invPeriod').value;
-      const rawPrev = parseFloat(document.getElementById('invPrevReading').value);
-      const rawCurrStr = document.getElementById('invCurrReading').value.trim();
-      const rawCurr = parseFloat(rawCurrStr);
-
-      if (rawCurrStr === '' || isNaN(rawCurr) || isNaN(rawPrev)) {
-        alert('Please enter a valid current sub-meter reading.');
-        return;
-      }
-
-      const prev = round2(rawPrev);
-      const curr = round2(rawCurr);
-
-      if (curr < prev) {
-        document.getElementById('meterValidationAlert').classList.remove('hidden');
-        alert('Current meter reading cannot be lower than the previous reading.');
-        return;
-      }
-
-      const kwhUsed = round2(curr - prev);
-      const rate = round2(appData.config.ratePerKwh);
-      const powerCost = round2(kwhUsed * rate);
-      const waterCost = round2(appData.config.waterFee);
-      const rentCost = round2(tenant.rent);
-      const grandTotal = round2(powerCost + waterCost + rentCost);
-
-      appData.invoices.unshift({
-        id: 'INV-' + Date.now().toString().slice(-6),
-        tenantId: tenant.id,
-        room: tenant.room,
-        tenantName: tenant.name,
-        period: period,
-        prevReading: prev,
-        currReading: curr,
-        kwhUsed: kwhUsed,
-        ratePerKwh: rate,
-        powerAmount: powerCost,
-        waterAmount: waterCost,
-        rentAmount: rentCost,
-        totalAmount: grandTotal,
-        amountPaid: 0.00,
-        status: 'Unpaid',
-        paidAt: null,
-        payMethod: null,
-        createdAt: new Date().toISOString().substring(0, 10)
-      });
-
-      tenant.currentMeter = curr;
-      saveState();
-      closeModal('createInvoiceModal');
-      showGuideSpeech(`Created bill for ${tenant.room}. Total: ₱${grandTotal.toFixed(2)}.`, 3000);
-    }
-
-    function filterInvoices(filter) {
-      activeFilter = filter;
-      document.querySelectorAll('.invFilterBtn').forEach(btn => {
-        if (btn.getAttribute('data-filter') === filter) {
-          btn.className = 'invFilterBtn active text-xs font-semibold px-3.5 py-1.5 rounded-lg border bg-slate-800 text-white cursor-pointer';
-        } else {
-          btn.className = 'invFilterBtn text-xs font-semibold px-3.5 py-1.5 rounded-lg border border-slate-200 bg-white text-slate-600 cursor-pointer';
-        }
-      });
-      renderInvoices();
-    }
-
-    function promptPayment(invoiceId) {
-      const inv = appData.invoices.find(i => i.id === invoiceId);
-      if (!inv) return;
-
-      const remaining = round2(inv.totalAmount - (inv.amountPaid || 0));
-      document.getElementById('payInvoiceId').value = inv.id;
-      document.getElementById('payInvoiceDisplay').innerText = `${inv.id} (${inv.room})`;
-      document.getElementById('payAmountDisplay').innerText = `₱${remaining.toFixed(2)}`;
-      document.getElementById('payAmountInput').value = remaining.toFixed(2);
-      document.getElementById('payAmountInput').max = remaining.toFixed(2);
-      document.getElementById('payRef').value = '';
-      openModal('paymentModal');
-    }
-
-    function handleRecordPayment(e) {
-      e.preventDefault();
-      const id = document.getElementById('payInvoiceId').value;
-      const rawPaid = parseFloat(document.getElementById('payAmountInput').value);
-      const method = document.getElementById('payChannel').value;
-      const ref = document.getElementById('payRef').value.trim() || 'Verified';
-
-      const inv = appData.invoices.find(i => i.id === id);
-      if (!inv) return;
-
-      const remaining = round2(inv.totalAmount - (inv.amountPaid || 0));
-      if (isNaN(rawPaid) || rawPaid <= 0 || round2(rawPaid) > remaining) {
-        alert(`Please enter a valid payment amount between ₱0.01 and ₱${remaining.toFixed(2)}.`);
-        return;
-      }
-
-      const paidNow = round2(rawPaid);
-      inv.amountPaid = round2((inv.amountPaid || 0) + paidNow);
-      inv.paidAt = new Date().toISOString().substring(0, 10);
-      const newEntry = `${method} (${ref})`;
-      inv.payMethod = inv.payMethod ? `${inv.payMethod}; ${newEntry}` : newEntry;
-      inv.status = inv.amountPaid >= inv.totalAmount ? 'Paid' : 'Partial';
-
-      saveState();
-      closeModal('paymentModal');
-      showGuideSpeech(`Recorded ₱${paidNow.toFixed(2)} for ${inv.room} via ${method}.`, 3000);
-    }
-
-    function openSmsReminder(invoiceId) {
-      const inv = appData.invoices.find(i => i.id === invoiceId);
-      if (!inv) return;
-      const tenant = appData.tenants.find(t => t.id === inv.tenantId);
-      const phone = tenant ? tenant.phone : 'Tenant';
-      const remaining = round2(inv.totalAmount - (inv.amountPaid || 0));
-
-      document.getElementById('smsRecipient').innerText = `${inv.tenantName} (${phone})`;
-      document.getElementById('smsMessageBox').value =
-        `Hello ${inv.tenantName}! Here is your Rentora bill for ${inv.room} (${inv.period}):\n` +
-        `- Electricity (${round2(inv.kwhUsed).toFixed(2)} kWh): ₱${round2(inv.powerAmount).toFixed(2)}\n` +
-        `- Water Fee: ₱${round2(inv.waterAmount).toFixed(2)}\n` +
-        `- Room Rent: ₱${round2(inv.rentAmount).toFixed(2)}\n` +
-        `BALANCE DUE: ₱${remaining.toFixed(2)}. Thank you! - Ate Elena`;
-      openModal('smsModal');
-    }
-
-    function copySmsText() {
-      const box = document.getElementById('smsMessageBox');
-      box.select();
-      navigator.clipboard.writeText(box.value);
-      closeModal('smsModal');
-      showGuideSpeech('SMS reminder copied to clipboard!', 3000);
-    }
-
-    function showReceipt(invoiceId) {
-      const inv = appData.invoices.find(i => i.id === invoiceId);
-      if (!inv) return;
-
-      const paid = round2(inv.amountPaid || 0);
-      const balance = round2(inv.totalAmount - paid);
-
-      const container = document.getElementById('receiptContent');
-      container.innerHTML = `
-        <div class="flex justify-between py-1 border-b border-dashed">
-          <span class="text-slate-500">Invoice:</span>
-          <span class="font-mono font-bold">${inv.id}</span>
-        </div>
-        <div class="flex justify-between py-1 border-b border-dashed">
-          <span class="text-slate-500">Date Issued:</span>
-          <span>${inv.createdAt}</span>
-        </div>
-        <div class="flex justify-between py-1 border-b border-dashed">
-          <span class="text-slate-500">Room &amp; Tenant:</span>
-          <span class="font-bold">${inv.room} (${inv.tenantName})</span>
-        </div>
-        <div class="flex justify-between py-1 border-b border-dashed">
-          <span class="text-slate-500">Billing Period:</span>
-          <span>${inv.period}</span>
-        </div>
-
-        <div class="pt-2">
-          <p class="font-bold text-slate-800 mb-1">Itemized Breakdown:</p>
-          <div class="space-y-1 bg-slate-50 p-2.5 rounded-xl border">
-            <div class="flex justify-between">
-              <span>Meter Range:</span>
-              <span>${round2(inv.prevReading).toFixed(2)} to ${round2(inv.currReading).toFixed(2)} kWh</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Electricity (${round2(inv.kwhUsed).toFixed(2)} kWh @ ₱${round2(inv.ratePerKwh).toFixed(2)}):</span>
-              <span class="font-medium">₱${round2(inv.powerAmount).toFixed(2)}</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Water Fee:</span>
-              <span class="font-medium">₱${round2(inv.waterAmount).toFixed(2)}</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Base Rent:</span>
-              <span class="font-medium">₱${round2(inv.rentAmount).toFixed(2)}</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-2 space-y-1 text-xs">
-          <div class="flex justify-between font-bold text-slate-900 text-sm">
-            <span>TOTAL BILL:</span>
-            <span class="text-emerald-700">₱${round2(inv.totalAmount).toFixed(2)}</span>
-          </div>
-          <div class="flex justify-between text-slate-600">
-            <span>Amount Paid:</span>
-            <span>₱${paid.toFixed(2)}</span>
-          </div>
-          <div class="flex justify-between font-semibold text-slate-800">
-            <span>Remaining Balance:</span>
-            <span>₱${balance.toFixed(2)}</span>
-          </div>
-        </div>
-
-        <div class="mt-2 p-2 rounded text-center text-xs font-semibold ${inv.status === 'Paid' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
-          STATUS: ${inv.status.toUpperCase()} ${inv.payMethod ? '(' + inv.payMethod + ')' : ''}
-        </div>
-      `;
-      openModal('receiptModal');
-    }
-
-    function renderInvoices() {
-      const tbody = document.getElementById('invoicesTableBody');
-      tbody.innerHTML = '';
-
-      let list = appData.invoices;
-      if (activeFilter === 'paid') list = list.filter(i => i.status === 'Paid');
-      if (activeFilter === 'unpaid') list = list.filter(i => i.status !== 'Paid');
-
-      if (list.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" class="p-6 text-center text-xs text-slate-400">No records found.</td></tr>';
-        return;
-      }
-
-      list.forEach(inv => {
-        const tr = document.createElement('tr');
-        tr.className = 'hover:bg-slate-50/80 transition';
-        const badgeColor = inv.status === 'Paid' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700';
-        const remaining = round2(inv.totalAmount - (inv.amountPaid || 0));
-
-        tr.innerHTML = `
-          <td class="p-3.5 font-mono text-xs font-semibold text-slate-700">${inv.id}</td>
-          <td class="p-3.5 font-medium text-slate-800">${inv.room} <span class="text-xs text-slate-400">(${inv.tenantName})</span></td>
-          <td class="p-3.5 text-slate-600">${inv.period}</td>
-          <td class="p-3.5 text-slate-600">${round2(inv.kwhUsed).toFixed(2)} kWh</td>
-          <td class="p-3.5 font-bold text-slate-800">
-            ₱${round2(inv.totalAmount).toFixed(2)}
-            ${remaining > 0 && inv.amountPaid > 0 ? `<span class="block text-[10px] text-amber-700 font-normal">Bal: ₱${remaining.toFixed(2)}</span>` : ''}
-          </td>
-          <td class="p-3.5">
-            <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold ${badgeColor}">${inv.status}</span>
-          </td>
-          <td class="p-3.5 text-right whitespace-nowrap">
-            <div class="inline-flex items-center justify-end gap-1.5">
-              <button type="button"
-                      onclick="showReceipt('${inv.id}')" 
-                      data-tip="View and print official statement for ${inv.room}."
-                      class="guide-hover cursor-pointer inline-flex items-center gap-1 text-xs bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border border-slate-300 hover:border-emerald-400 font-semibold px-3 py-1.5 rounded-lg shadow-sm transition-all active:scale-95">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                <span>Receipt</span>
-              </button>
-              ${inv.status !== 'Paid' ? `
-                <button type="button"
-                        onclick="openSmsReminder('${inv.id}')" 
-                        data-tip="Generate SMS reminder for ${inv.room}."
-                        class="guide-hover cursor-pointer text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 border border-amber-300 font-semibold px-3 py-1.5 rounded-lg shadow-sm transition-all active:scale-95">
-                  SMS
-                </button>
-                <button type="button"
-                        onclick="promptPayment('${inv.id}')" 
-                        data-tip="Record payment for ${inv.room}."
-                        class="guide-hover cursor-pointer text-xs bg-emerald-600 hover:bg-emerald-700 text-white border border-emerald-600 font-semibold px-3 py-1.5 rounded-lg shadow-sm transition-all active:scale-95">
-                  Pay
-                </button>
-              ` : `
-                <span class="text-[11px] text-slate-400 font-medium px-2 py-1 select-none">Settled</span>
-              `}
-            </div>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function renderAll() {
-      document.getElementById('statTotalRooms').innerText = appData.tenants.length;
-      document.getElementById('countTenantsBadge').innerText = appData.tenants.length;
-      document.getElementById('countInvoicesBadge').innerText = appData.invoices.length;
-
-      let unpaid = 0;
-      let paid = 0;
-      appData.invoices.forEach(inv => {
-        const amtPaid = round2(inv.amountPaid !== undefined ? inv.amountPaid : (inv.status === 'Paid' ? inv.totalAmount : 0));
-        const rem = round2(inv.totalAmount - amtPaid);
-        paid = round2(paid + amtPaid);
-        unpaid = round2(unpaid + rem);
-      });
-
-      document.getElementById('statUnpaidTotal').innerText = `₱${unpaid.toFixed(2)}`;
-      document.getElementById('statPaidTotal').innerText = `₱${paid.toFixed(2)}`;
-
-      renderTenants();
-      renderInvoices();
-    }
-
-    function openModal(id) {
-      hideGuideSpeech();
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.classList.remove('hidden');
-      el.classList.add('flex');
-    }
-
-    function closeModal(id) {
-      hideGuideSpeech();
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.classList.remove('flex');
-      el.classList.add('hidden');
-    }
-
-    function handleBackdropClick(event, modalId) {
-      if (event.target.id === modalId) {
-        closeModal(modalId);
-      }
-    }
-
-    function setupKeyboardShortcuts() {
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          ['signUpModal', 'resetPasswordModal', 'addTenantModal', 'createInvoiceModal', 'paymentModal', 'smsModal', 'receiptModal'].forEach(id => {
-            closeModal(id);
-          });
-        }
-      });
-    }
-
-    function showGuideSpeech(text, autoHideMs = 0) {
-      if (speechTimer) {
-        clearTimeout(speechTimer);
-        speechTimer = null;
-      }
-      const bubble = document.getElementById('guideSpeechBubble');
-      const speech = document.getElementById('guideSpeechText');
-      if (speech && text) speech.innerText = text;
-      if (bubble) {
-        bubble.classList.remove('opacity-0', 'translate-y-2', 'invisible');
-        bubble.classList.add('opacity-100', 'translate-y-0', 'visible');
-      }
-      if (autoHideMs > 0) {
-        speechTimer = setTimeout(() => {
-          hideGuideSpeech();
-        }, autoHideMs);
-      }
-    }
-
-    function hideGuideSpeech() {
-      if (speechTimer) {
-        clearTimeout(speechTimer);
-        speechTimer = null;
-      }
-      const bubble = document.getElementById('guideSpeechBubble');
-      if (bubble) {
-        bubble.classList.remove('opacity-100', 'translate-y-0', 'visible');
-        bubble.classList.add('opacity-0', 'translate-y-2', 'invisible');
-      }
-    }
-
-    function setupMemojiTracker() {
-      const headWrapper = document.getElementById('memojiHeadWrapper');
-      const leftEyeSocket = document.getElementById('leftEyeSocket');
-      const rightEyeSocket = document.getElementById('rightEyeSocket');
-      const leftIris = document.getElementById('leftIris');
-      const rightIris = document.getElementById('rightIris');
-      const avatarBtn = document.getElementById('memojiAvatarBtn');
-
-      window.addEventListener('mousemove', (e) => {
-        if (!headWrapper) return;
-
-        const headRect = headWrapper.getBoundingClientRect();
-        const headCenterX = headRect.left + headRect.width / 2;
-        const headCenterY = headRect.top + headRect.height / 2;
-
-        const diffX = e.clientX - headCenterX;
-        const diffY = e.clientY - headCenterY;
-
-        const tiltY = Math.max(-18, Math.min(18, diffX / 45));
-        const tiltX = Math.max(-14, Math.min(14, -diffY / 55));
-
-        headWrapper.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-
-        trackIris(e, leftEyeSocket, leftIris);
-        trackIris(e, rightEyeSocket, rightIris);
-      });
-
-      function trackIris(event, socket, iris) {
-        if (!socket || !iris) return;
-        const rect = socket.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-
-        const deltaX = event.clientX - centerX;
-        const deltaY = event.clientY - centerY;
-        const angle = Math.atan2(deltaY, deltaX);
-
-        const maxDist = 3.0;
-        const distance = Math.min(maxDist, Math.hypot(deltaX, deltaY) / 40);
-
-        const moveX = Math.cos(angle) * distance;
-        const moveY = Math.sin(angle) * distance;
-
-        iris.style.transform = `translate(${moveX}px, ${moveY}px)`;
-      }
-
-      if (avatarBtn) {
-        avatarBtn.onmouseenter = () => {
-          showGuideSpeech("Hello! I am Ate Elena. Hover over buttons or cards for help.");
-        };
-        avatarBtn.onmouseleave = () => {
-          hideGuideSpeech();
-        };
-      }
-
-      document.addEventListener('mouseover', (e) => {
-        const target = e.target.closest('.guide-hover');
-        if (target) {
-          const tip = target.getAttribute('data-tip');
-          if (tip) showGuideSpeech(tip);
-        }
-      });
-
-      document.addEventListener('mouseout', (e) => {
-        const target = e.target.closest('.guide-hover');
-        if (target && !target.contains(e.relatedTarget)) {
-          hideGuideSpeech();
-        }
-      });
-
-      setInterval(() => {
-        triggerMemojiBlink();
-      }, 4000);
-    }
-
-    function triggerMemojiBlink() {
-      const leftLid = document.getElementById('leftLid');
-      const rightLid = document.getElementById('rightLid');
-      if (!leftLid || !rightLid) return;
-
-      leftLid.style.height = '100%';
-      rightLid.style.height = '100%';
-
-      setTimeout(() => {
-        leftLid.style.height = '0%';
-        rightLid.style.height = '0%';
-      }, 160);
-    }
-
-    function triggerMemojiWink() {
-      const rightLid = document.getElementById('rightLid');
-      const mouth = document.getElementById('memojiMouth');
-      if (!rightLid) return;
-
-      rightLid.style.height = '100%';
-      mouth.style.transform = 'scale(1.2) rotate(4deg)';
-      showGuideSpeech("Accurate records without math errors!", 2500);
-
-      setTimeout(() => {
-        rightLid.style.height = '0%';
-        mouth.style.transform = 'scale(1) rotate(0deg)';
-      }, 350);
-    }
-
-    window.onload = init;
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
